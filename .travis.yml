@@ -1,10 +1,14 @@
 language: ruby
 rvm:
   - 2.2.3
+env:
+  - RAILS_ENV=test
+  - APP_NAME='Wrocław RoR Workshops'
 services:
   - postgresql
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database workshops_test;' -U postgres
+  - bundle exec rake db:schema:load
 addons:
   postgresql: '9.3'
