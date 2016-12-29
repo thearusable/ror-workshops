@@ -21,7 +21,8 @@ end
 25.times do
   Student.create!(
     first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name
+    last_name: Faker::Name.last_name,
+    birthdate: Faker::Date.between(25.years.ago, 20.years.ago)
   )
 end
 
