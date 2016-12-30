@@ -1,12 +1,12 @@
 puts "Seeds-development: start"
-TEACHER_TITLES = %w(Dr. Prof. TA)
+
 User.create!(email: 'admin@admin.com', password: 'adminadmin')
 
 30.times do
   Teacher.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    academic_title: TEACHER_TITLES.sample
+    academic_title: Teacher::TITLES.sample
   )
 end
 
@@ -27,6 +27,18 @@ end
 end
 
 students = Student.all
+chance_of_not_paying = [1,1,1,1,1,1,0]
+100.times do
+  current = students.sample
+  payment = Payment.create!(
+      student_id: current.id,
+      date_of_payment: Faker::Date.between(12.months.ago, 1.months.ago),
+      month: Payment::MONTHS.sample,
+      amount: if chance_of_not_paying.sample == 1 then Faker::Number.decimal(2) else nil end
+    )
+  current.payments << payment
+end
+
 SubjectItem.all.each do |subject_item|
   subject_item.students << students.sample(rand(1..4))
 end

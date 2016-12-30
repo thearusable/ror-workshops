@@ -1,0 +1,10 @@
+- breadcrumb :payments
+%table.table.table-condensed.payments
+  %thead
+    %tr
+      %th= t('payment.columns.student')
+      %th= t('payment.columns.amount')
+      %th= t('payment.columns.month')
+      %th= t('payment.columns.date_of_payment')
+  %tbody
+    = render payments

@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20150719115626) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.integer  "student_id"
+    t.date     "date_of_payment"
+    t.string   "month"
+    t.float    "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "payments", ["student_id"], name: "index_payments_on_student_id", using: :btree
+
   create_table "subject_item_notes", force: :cascade do |t|
     t.integer  "value"
     t.integer  "subject_item_id"
@@ -85,4 +96,6 @@ ActiveRecord::Schema.define(version: 20150719115626) do
   add_foreign_key "subject_item_notes", "students"
   add_foreign_key "subject_item_notes", "subject_items"
   add_foreign_key "subject_items", "teachers"
+  add_foreign_key "payments", "students"
+
 end

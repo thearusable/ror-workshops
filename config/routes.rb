@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get :subjects
   end
 
+  resources :payments
+
   match '/reports/subjects' => 'reports#subjects', as: 'report_subjects', via: [:get]
 
 end

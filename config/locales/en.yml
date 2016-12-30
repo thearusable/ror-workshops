@@ -2,6 +2,7 @@ en:
   navbar:
     students: Students
     teachers: Teachers
+    payments: Payments
     reports: Reports
     reports_subjects: Subjects
     logout: Logout
@@ -33,3 +34,9 @@ en:
     columns:
       full_name: Full name
       avg_notes: Notes avarange
+  payment:
+    columns:
+      student: Student's name
+      amount: Amount
+      month: Month
+      date_of_payment: Date of Payment
